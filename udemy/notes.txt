@@ -1,0 +1,22 @@
+laravel and MVC
+M - Model - Deals with database
+V - VIEW - Deals with HTML 
+C - Controller - the middle man/ the VIEW and the model
+
+ Call functions (methods) when they are inside the class~~~~~~~ functions == methods
+ when outside the class they are normal functions~~~~~~~ functions === functions
+
+ you are able to access data,properties,etc from different classes useing extends as you would with react
+ and there are different type of properties. you have public, private, protected, and static. A public property can be access from any where, it becomes global.A private property can only be accessed from within it's scope. A protected property can be acceessed within other classes when using extends. And static properties makes them accessible without needing an instantiation of the class. A property declared as static cannot be accessed with an instantiated class object
+
+ ~~~~~~~Uploading files~~~~~~
+
+ php.ini configurations 
+
+ file_uploads - true,1 or On 
+ post_max_size - 8M
+ upload_max_file_size - 2M
+ memory_limit - 128M
+ max_input_time - -1 - no limit
+ upload_tmp_dir - NULL
+ max_execution_time - 30 second
