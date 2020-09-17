@@ -37,13 +37,33 @@
             echo "<hr>";
         }
 
-        $found_user_id = User::find_user_by_id(3);
-            echo '<h1 style="font-weight:bold;">Single User</h1>';
-            echo "<h2>User Name: " . $found_user_id->username . "</h2>";
-            echo "<h2>Password: " . $found_user_id->password . "</h2>";
-            echo "<h2>First Name: " . $found_user_id->first_name . "</h2>";
-            echo "<h2>Last Name: " . $found_user_id->last_name . "</h2>";
-            echo "<hr>";
+        // $found_user_id = User::find_user_by_id(3);
+        //     echo '<h1 style="font-weight:bold;">Single User</h1>';
+        //     echo "<h2>User Name: " . $found_user_id->username . "</h2>";
+        //     echo "<h2>Password: " . $found_user_id->password . "</h2>";
+        //     echo "<h2>First Name: " . $found_user_id->first_name . "</h2>";
+        //     echo "<h2>Last Name: " . $found_user_id->last_name . "</h2>";
+        //     echo "<hr>";
+
+        // $user = new User();
+        // $user->username = "bobby";
+        // $user->password = "password1";
+        // $user->first_name = "bob";
+        // $user->last_name = "smurf";
+
+        // $user->create();
+
+
+
+
+        $user_update = User::find_user_by_id(5);
+        $user_update->username = "demonte";
+        $user_update->password = "password1";
+        $user_update->first_name = "De";
+        $user_update->last_name = "H";
+
+        $user_update->update();
+        
 
         ?>
         <ol class="breadcrumb">

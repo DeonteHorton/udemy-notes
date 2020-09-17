@@ -110,7 +110,48 @@ class user{
         return array_key_exists($key,$object_properties);
 
     }
-}
+
+    // this is our create method, here we are making a query to take the users input from the form and store it into the database
+    public function create(){
+        global $database;
+
+        $sql = "INSERT INTO users (username,password,first_name,last_name) VALUES (";
+        // the --> .= <-- is useful for multi-line strings or code 
+        $sql .= " ' " . $database->escape_string($this->username) . " ',";
+        $sql .= " ' " . $database->escape_string($this->password) . " ',";
+        $sql .= " ' " . $database->escape_string($this->first_name) . " ',";
+        $sql .= " ' " . $database->escape_string($this->last_name) . "')";
+
+
+
+        if($database->query($sql)){
+            $this->id = $database->insert_id();
+            return true;
+        } else {
+
+            return false;
+        }
+
+    }
+
+    public function update(){
+        global $database;
+        $sql = "UPDATE users SET ";
+        $sql .= "username=' " . $database->escape_string($this->username) . " ',";
+        $sql .= "password= ' " . $database->escape_string($this->password) . " ',";
+        $sql .= "first_name=' " . $database->escape_string($this->first_name) . " ',";
+        $sql .= "last_name=' " . $database->escape_string($this->last_name) . " ' ";
+        $sql .= "WHERE id=" . $database->escape_string($this->id);
+
+
+        $database->query($sql);
+
+        return (mysqli_affected_rows($database->connection) ==1) ? true : false;
+
+    }
+
+
+} //End of user class 
 
 
 ?>

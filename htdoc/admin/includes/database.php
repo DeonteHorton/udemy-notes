@@ -46,6 +46,12 @@ class Database {
         $escaped_string = mysqli_real_escape_string($this->connection,$string);
         return $escaped_string;
     }
+
+    // created this method to grab the last id from the database
+    public function insert_id(){
+    
+        return mysqli_insert_id($this->connection);
+    }
     
 }
 
