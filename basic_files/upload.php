@@ -9,7 +9,8 @@
  error - the error code -->
 
 
-<?php
+ <?php
+ echo "<h1 style='font-size:48px;'>File Uploader</h1>";
 if(isset($_POST['submit'])){
 
     // print_r its going to print the value and the keys of the array
@@ -29,21 +30,55 @@ if(isset($_POST['submit'])){
         UPLOAD_ERR_EXTENSION  =>  "A PHP extension stopped the file upload"
     );
 
-    $temp_name = $_FILES['file_upload']['tmp_name'];
-    $file_name = $_FILES['file_upload']['name'];
-    $directory= "uploads";
+    $directory= "../DB_data_for_project/gallery_db";
+    // $directory= "uploads";
     $the_error = $_FILES['file_upload']['error'];
 
     $the_message = $upload_errors[$the_error];
-    if(move_uploaded_file($temp_name, $directory . "/" . $file_name)){
-        echo 'File uploaded successfully';
-    } else {
-        echo $the_message;
+
+    // echo "File paths" .$temp_name[$i]."<br>";
+    for ($i=0; $i < count($_FILES['file_upload']['name']) ; $i++) { 
+
+        $temp_name = $_FILES['file_upload']['tmp_name'][$i];
+        $file_name =  $_FILES['file_upload']['name'][$i];
+
+        $mydate=getdate(date("U"));
+        date_default_timezone_set("America/Mexico_City");
+        $date = date("h:i:s a");
+        $index = $i + 1;
+
+        if(!file_exists( $directory. '/' . $file_name)){
+            move_uploaded_file($temp_name, $directory . "/" . $file_name);
+            echo '<h1>' . $index . ' [' . $file_name .']: File uploaded successfully </h1><br>';
+            echo '<hr>';
+
+        } else if(file_exists( $directory. '/' . $file_name)){
+
+            unlink($directory . "/" . $file_name);
+            move_uploaded_file($temp_name, $directory . "/" . $file_name);
+            echo '<h1>' . $index . ' [' . $file_name .']: File updated successfully </h1><br>';
+            echo "<h2> Updated at $date</h2>";
+            // echo "<h2> Updated at - $mydate[hours];$mydate[minutes];$mydate[seconds] $mydate[month] $mydate[mday]</h2>";
+            echo '<hr>';
+
+        } else {
+            echo '<h1>' . $index . ' Error uploading file: [' . $file_name .']: File updated successfully </h1><br>';
+        }
+        
     }
 
+    
 
 
 }
+
+if (isset($_GET['file_upload'])) {
+    for($i=0; $i < count($_FILES['file_upload']['name']) ; $i++){
+        $file_name =  $_FILES['file_upload']['name'][$i];
+        echo $file_name;
+    }
+}
+
 
 ?>
 <!DOCTYPE html>
@@ -59,18 +94,19 @@ if(isset($_POST['submit'])){
     <form action="upload.php" enctype="multipart/form-data" method="post">
     <h1>
     
+
+    </h1>
+        <h2 id="output"></h2>
+        <input type="file" accept=".opt,.frm,.ibd" name="file_upload[]" multiple='true' >
+        <br>
+        <input type="submit" name="submit">
+    </form>
     <?php
     
     if(!empty($upload_errors)){
         echo $the_message;
-    }
-    
+    };
     ?>
-
-    </h1>
-        <input type="file" name="file_upload">
-        <br>
-        <input type="submit" name="submit">
-    </form>
 </body>
 </html>
+

@@ -26,16 +26,16 @@
         //     echo "<hr>";
         // }
 
-        $users = User::find_all_users();
+        // $users = user::find_all_users();
 
-        echo '<h1 style="font-weight:bold;">All Users</h1>';
-        foreach($users as $user){
-            echo "<h2>User Name: " . $user->username . "</h2>";
-            echo "<h2>Password: " . $user->password . "</h2>";
-            echo "<h2>First Name: " . $user->first_name . "</h2>";
-            echo "<h2>Last Name: " . $user->last_name . "</h2>";
-            echo "<hr>";
-        }
+        // echo '<h1 style="font-weight:bold;">All Users</h1>';
+        // foreach($users as $user){
+        //     echo "<h2>User Name: " . $user->username . "</h2>";
+        //     echo "<h2>Password: " . $user->password . "</h2>";
+        //     echo "<h2>First Name: " . $user->first_name . "</h2>";
+        //     echo "<h2>Last Name: " . $user->last_name . "</h2>";
+        //     echo "<hr>";
+        // }
 
         // $found_user_id = User::find_user_by_id(3);
         //     echo '<h1 style="font-weight:bold;">Single User</h1>';
@@ -56,14 +56,17 @@
 
 
 
-        $user_update = User::find_user_by_id(5);
-        $user_update->username = "demonte";
-        $user_update->password = "password1";
-        $user_update->first_name = "De";
-        $user_update->last_name = "H";
+        // $user_update = User::find_user_by_id(5);
+        // $user_update->username = "demonte";
+        // $user_update->password = "password1";
+        // $user_update->first_name = "De";
+        // $user_update->last_name = "H";
 
-        $user_update->update();
+        // $user_update->update();
         
+        $user_delete = User::find_user_by_id(5);
+
+        $user_delete->delete();
 
         ?>
         <ol class="breadcrumb">

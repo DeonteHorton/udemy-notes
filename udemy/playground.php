@@ -28,3 +28,5 @@ echo "<br>";
 echo "<h1>The number of employees that where laid off or fired: " . $get_info->fired_laidOff . "</h1>";
 
 ?>
+
+<!--  file  -->
