@@ -13,7 +13,7 @@ class user extends db_object{
     public $last_name;
     public $user_image;
     public $upload_directory = 'images';
-    public $image_placeholder = 'http://placehold.it/400x400&text=image';
+    public $image_placeholder = 'http://placehold.it/400x400&text=USER';
 
 
 

@@ -47,7 +47,7 @@ $users = user::find_all();
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <!-- <th>User Image</th> -->
+                                    <th>User Image</th>
                                     <th>User Name</th>
                                     <th>First Name</th>
                                     <th>Last Name</th>
@@ -61,7 +61,7 @@ $users = user::find_all();
                                 foreach ($users as $user ) {
                                     echo "<tr>";
                                     echo "<td>{$user->id}</td>";
-                                    // echo "<td><img class='admin-thumbnail' src='{$user->user_image()}'></td>";
+                                    echo "<td><img class='user_image' src='{$user->user_image()}'></td>";
                                     echo "<td>{$user->username}
                                         <div class='action_link'>
                                             <a href='delete_photo.php/?id='{$user->id}'>Delete</a>
