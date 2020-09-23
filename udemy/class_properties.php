@@ -6,12 +6,12 @@ class Cars{
 
     function car_detail(){
         
-        return "This car has " . $this->wheel_count . " wheel/s";
+        return "This car has {$this->wheel_count} wheel/s";
 
     }
 
     function truck_detail(){
-        return "This truck has " . $this->door_count . " doors";
+        return "This truck has {$this->door_count} doors";
     }
 };
 // these are instances

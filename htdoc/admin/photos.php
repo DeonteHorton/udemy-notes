@@ -32,14 +32,45 @@
                         PHOTOS Page
                         <small>Subheading</small>
                     </h1>
-                    <ol class="breadcrumb">
-                        <li>
-                            <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
-                        </li>
-                        <li class="active">
-                            <i class="fa fa-file"></i> Blank Page
-                        </li>
-                    </ol>
+                    
+                    <div class="col-md-12">
+                        <table class='table table-hover'>
+                            <thead>
+                                <tr>
+                                    <th>Photo</th>
+                                    <th>Id</th>
+                                    <th>File Name</th>
+                                    <th>Title</th>
+                                    <th>Size</th>
+                                </tr>
+                            </thead>
+                            <tbody>                             
+                                <?php
+
+                                $photos = photo::find_all();
+
+                                foreach ($photos as $photo ) {
+                                    echo "<tr>";
+                                    echo "<td><img class='admin-thumbnail' src='{$photo->picture_path()}'>
+                                            <div class='picture_link'>
+                                                <a href='delete_photo.php/?id='{$photo->id}'>Delete</a>
+                                                <a href='edit_photo.php?id='{$photo->id}'>Edit</a>
+                                                <a href='#'>View</a>
+                                            </div>
+                                        </td>";
+                                    echo "<td>{$photo->id}</td>";
+                                    echo "<td>{$photo->file_name}</td>";
+                                    echo "<td>{$photo->title}</td>";
+                                    echo "<td>{$photo->size}</td>";
+                                    echo "<tr>";
+                                }
+                                
+                                ?>
+                            </tbody>
+                        </table> <!-- end of the table -->
+                    </div>
+
+
                 </div>
             </div>
             <!-- /.row -->

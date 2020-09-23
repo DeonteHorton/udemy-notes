@@ -1,5 +1,14 @@
 <?php include("includes/header.php"); ?>
 
+<?php if(!$session->is_signed_in()) {redirect('login.php');}  ?>
+
+<?php
+
+$users = user::find_all();
+
+?>
+
+
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
             <!-- Brand and toggle get grouped for better mobile display -->
@@ -32,14 +41,43 @@
                         USERS Page
                         <small>Subheading</small>
                     </h1>
-                    <ol class="breadcrumb">
-                        <li>
-                            <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
-                        </li>
-                        <li class="active">
-                            <i class="fa fa-file"></i> Blank Page
-                        </li>
-                    </ol>
+                                        
+                    <div class="col-md-12">
+                        <table class='table table-hover'>
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <!-- <th>User Image</th> -->
+                                    <th>User Name</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                </tr>
+                            </thead>
+                            <tbody>                             
+                                <?php
+
+                                $users = user::find_all();
+
+                                foreach ($users as $user ) {
+                                    echo "<tr>";
+                                    echo "<td>{$user->id}</td>";
+                                    // echo "<td><img class='admin-thumbnail' src='{$user->user_image()}'></td>";
+                                    echo "<td>{$user->username}
+                                        <div class='action_link'>
+                                            <a href='delete_photo.php/?id='{$user->id}'>Delete</a>
+                                            <a href='edit_photo.php?id='{$user->id}'>Edit</a>
+                                            <a href='#'>View</a>
+                                        </div>
+                                    </td>";
+                                    echo "<td>{$user->first_name}</td>";
+                                    echo "<td>{$user->last_name}</td>";
+                                    echo "<tr>";
+                                }
+                                
+                                ?>
+                            </tbody>
+                        </table> <!-- end of the table -->
+                    </div>
                 </div>
             </div>
             <!-- /.row -->

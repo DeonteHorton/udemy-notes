@@ -1,53 +1,21 @@
 <?php
-class user{
+class user extends db_object{
+
+    // Here we are making the table users protected, it can be used everywhere else, an example: the create method can be used in another class. The methods will become accessible
+    protected static $table_users = "users";
+    protected static $table_users_field = array('username','password','first_name','last_name','user_image');
+
 
     public $id;
     public $username;
     public $password;
     public $first_name;
     public $last_name;
-    
-    // these methods are public, it can be used through out the whole project 
-
-    // This method runs a MySQL statement that finds all the users 
-    public static function find_all_users(){
-
-        return self::find_this_query("SELECT * FROM users");
-
-    }
+    public $user_image;
+    public $upload_directory = 'images';
+    public $image_placeholder = 'http://placehold.it/400x400&text=image';
 
 
-    // This method runs a MySQL statement that finds a single user by id 
-    public static function find_user_by_id($id){
-        global $database;
-        
-        $result_array =  self::find_this_query("SELECT * FROM users WHERE id = $id");
-
-        // since we are only get a single user, we can pull the data out from the array and return it.. 
-        // here we used the ternary opperator to do a singled line if else statement 
-        return !empty($result_array) ?  array_shift($result_array) : false;
-
-    }
-
-
-
-    // this method makes the query for us. All of the sql statement can be passed through this method 
-    public static function find_this_query($sql){
-        global $database;
-
-        // created an empty array 
-        $object_array = array();
-        $result_set = $database->query($sql);
-
-        // created a loop that fetches the data from the table in the database
-        while($row = mysqli_fetch_array($result_set)){
-            
-            // this is where the key and values of the object are stored. 
-            $object_array[] = self::instantation($row);
-        }
-        return $object_array;
-
-    }
 
     
     public static function verify_user($username,$password){
@@ -59,13 +27,13 @@ class user{
 
 
         // here we created a multi line sql statement and ran it through the query 
-        $sql = " SELECT * FROM users WHERE ";
+        $sql = " SELECT * FROM " . self::$table_users . " WHERE ";
         $sql .= "username = '{$username}'";
         $sql .= "AND password = '{$password}'";
         $sql .= " LIMIT 1";
 
 
-        $result_array =  self::find_this_query($sql);
+        $result_array =  self::find_by_query($sql);
 
         return !empty($result_array) ?  array_shift($result_array) : false;
 
@@ -73,97 +41,23 @@ class user{
     }
 
 
-    // here we are instantating our object 
-    // it loops though the columns and assigns the data into certain object properties 
 
-    // the paramater(table values/ data from the DB) in find_this_query method is being passed down to this method
-    public static function instantation($the_record){
+    public function user_image(){
 
-        $the_object = new self;
-
-        // $the_object->username = $found_user_id['username'];
-        // $the_object->password = $found_user_id['password'];
-        // $the_object->first_name = $found_user_id['first_name'];
-        // $the_object->last_name = $found_user_id['last_name'];
-
-        // doing a loop to get all of the values in the object ]
-        foreach($the_record as $key => $value) {
-
-            if($the_object->has_the_key($key)){
-                $the_object->$key = $value;
-                
-            }
-        }
-
-        return $the_object;
-    }
-
-
-
-    // this method checks to see if there's a key that exists 
-    private function has_the_key($key){
-
-        // stores the object keys in a var 
-        $object_properties = get_object_vars($this);
-
-        // if the key exist in the array, its going to return true 
-        return array_key_exists($key,$object_properties);
+        return empty($this->user_image) ? $this->image_placeholder : $this->upload_directory.DS.$this->user_image;
 
     }
 
-    // this is our create method, here we are making a query to take the users input from the form and store it into the database
-    public function create(){
-        global $database;
-
-        $sql = "INSERT INTO users (username,password,first_name,last_name) VALUES (";
-        // the --> .= <-- is useful for multi-line strings or code 
-        $sql .= " ' " . $database->escape_string($this->username) . " ',";
-        $sql .= " ' " . $database->escape_string($this->password) . " ',";
-        $sql .= " ' " . $database->escape_string($this->first_name) . " ',";
-        $sql .= " ' " . $database->escape_string($this->last_name) . "')";
 
 
+  
 
-        if($database->query($sql)){
-            $this->id = $database->insert_id();
-            return true;
-        } else {
+   
 
-            return false;
-        }
+  
 
-    }
-
-    public function update(){
-        global $database;
-        $sql = "UPDATE users SET ";
-        $sql .= "username=' " . $database->escape_string($this->username) . " ',";
-        $sql .= "password= ' " . $database->escape_string($this->password) . " ',";
-        $sql .= "first_name=' " . $database->escape_string($this->first_name) . " ',";
-        $sql .= "last_name=' " . $database->escape_string($this->last_name) . " ' ";
-        $sql .= "WHERE id=" . $database->escape_string($this->id);
-
-
-        $database->query($sql);
-
-        return (mysqli_affected_rows($database->connection) ==1) ? true : false;
-
-    }
-
-    public function delete(){
-        global $database;
-        $sql = "DELETE FROM users WHERE id =" . $database->escape_string($this->id);
-
-
-        if($database->query($sql)){
-            $this->id = $database->insert_id();
-            return true;
-        } else {
-
-            return false;
-        }
-
-    }
+    
+    
 
 
 } //End of user class 

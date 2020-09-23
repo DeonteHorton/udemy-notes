@@ -1,0 +1,133 @@
+body{
+    background-image: url(../media/umbrella-img/pattern.jpg);
+    scroll-behavior: smooth;
+}
+.row-spacing{
+    margin-top: 5%;
+}
+.nav-links ul{
+    list-style: none;
+    margin-top: 5%;
+}
+.nav-links li{
+    margin-left: 30px;
+    display: inline;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.nav-links a{
+    color: #000;
+}
+.footer-nav-links ul{
+    list-style: none;
+}
+.footer-nav-links li{
+    margin-left: 30px;
+    display: inline;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+.footer-nav-links a{
+    color: #fff;
+}
+.hero-image{
+    background-color: #a0c63f;
+}
+.badge-border{
+    border: 18px solid #fffcfc;
+    border-radius: 50%;
+    box-shadow:0px 0px 0px 1px #0000003d;
+    background-color: #8eb53e;   
+    padding: 12%;
+    display: inline-block;
+    margin-left: 15%;
+}
+.info-descrip{
+    text-transform: uppercase;
+    text-align: center;
+}
+h4{
+    text-transform: uppercase;
+}
+h6{
+    text-transform: uppercase;
+    font-size: 14px;
+}
+.description{
+    text-align: center;
+    text-transform: capitalize;
+}
+.green-txt{
+    color: rgb(16, 116, 16);
+}
+.margin-spacing{
+    margin-left: -5.5%;
+}
+.info-box{
+    position: relative;
+}
+
+
+.info-txt{
+    background-color: #fff;
+    position: absolute;
+    margin-left: 34%;
+    margin-top: -25%;
+    width: 50%;
+    height: 100%;
+}
+.link-to-top{
+    margin-left: 100%;
+    background-color: #8eb53e;
+    border-radius: 50%;
+}
+.subscribe{
+    margin-left: 35%;
+}
+.dotted-border{
+    border-bottom-style: dashed;
+    margin-top: 5%;
+}
+footer{
+    background-color: #fff;
+}
+
+.bgc-black{
+    background: #000;
+    color: #fff;
+}
+h5{
+    text-transform: uppercase;
+}
+footer ul{
+    margin-left: -11%;
+    list-style: none;
+}
+/* SECOND PAGE/ ABOUT US */
+.green-border{
+    background-color: rgb(47, 153, 47);
+    height: 40px;
+}
+.main-bgc{
+    background-color: #fffcfc;
+}
+.link-to-top-button{
+    margin-left: 85%;
+    background-color: #8eb53e;
+    border-radius: 50%;
+}
+/* Third page / News*/
+.search-box-news{
+    padding: 25px;
+    font-size: 24px;
+}
+.btn-default{
+    background-color: #8eb53e;
+ }
+ .btn-default:hover{
+     background-color: #a7d649
+ }
+
+@media(max-width:760px){
+
+}

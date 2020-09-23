@@ -20,3 +20,6 @@ C - Controller - the middle man/ the VIEW and the model
  max_input_time - -1 - no limit
  upload_tmp_dir - NULL
  max_execution_time - 30 second
+
+
+ ~~~~~~ Abstracting Properties ~~~~~~~

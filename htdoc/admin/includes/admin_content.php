@@ -37,6 +37,13 @@
         //     echo "<hr>";
         // }
 
+
+        // bringing it back as an array 
+        // $users = user::find_all_users();
+        //     // using a foreach loop to loop through an array s
+        // foreach ($users as $user ) {
+        //     echo $user->id .":". $user->username . "<br>";
+        // }
         // $found_user_id = User::find_user_by_id(3);
         //     echo '<h1 style="font-weight:bold;">Single User</h1>';
         //     echo "<h2>User Name: " . $found_user_id->username . "</h2>";
@@ -45,18 +52,37 @@
         //     echo "<h2>Last Name: " . $found_user_id->last_name . "</h2>";
         //     echo "<hr>";
 
-        // $user = new User();
-        // $user->username = "bobby";
-        // $user->password = "password1";
-        // $user->first_name = "bob";
-        // $user->last_name = "smurf";
+        // $photo = new photo();
+        // $photo->title = "title1";
+        // $photo->description = "1sssssss";
+        // $photo->size = 20;
+        // $photo->file_name = "jpg";
 
-        // $user->create();
+        // $photo->create();
+
+        // $photos = photo::find_all();
+
+        // foreach ($photos as $photo ) {
+        //     echo $photo->title . "<br>";
+        //     echo $photo->description . "<br>";
+        //     echo $photo->file_name . "<br>";
+        //     echo $photo->file_type . "<br>";
+        //     echo $photo->size . "<br>";
+        //     echo "<hr>";
 
 
+        // }
+
+        // <td></td>
+        // <td></td>
+        // <td></td>
+        // <td></td>
+        // <td></td>
+
+        echo INCLUDES_PATH;
 
 
-        // $user_update = User::find_user_by_id(5);
+        // $user_update = User::find_by_id(5);
         // $user_update->username = "demonte";
         // $user_update->password = "password1";
         // $user_update->first_name = "De";
@@ -64,9 +90,12 @@
 
         // $user_update->update();
         
-        $user_delete = User::find_user_by_id(5);
+        // $user_delete = User::find_by_id(4);
+        // $user_delete->delete();
 
-        $user_delete->delete();
+        // $user = User::find_user_by_id(5);
+        // $user->password = 'WHATEVER_2001';
+        // $user->update();
 
         ?>
         <ol class="breadcrumb">

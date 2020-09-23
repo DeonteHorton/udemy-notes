@@ -30,67 +30,50 @@ if(isset($_POST['submit'])){
         UPLOAD_ERR_EXTENSION  =>  "A PHP extension stopped the file upload"
     );
 
-    $directory= "uploads";
+    $directory= "../DB_data_for_project/gallery_db";
+    // $directory= "uploads";
     $the_error = $_FILES['file_upload']['error'];
     $the_message = $upload_errors[$the_error];
 
-    function alert($msg){
-        echo "<script>alert(" . $msg. ")</script>";
-    }
-    
+
+    // echo "File paths" .$temp_name[$i]."<br>";
     for ($i=0; $i < count($_FILES['file_upload']['name']) ; $i++) { 
-        // $in_array = array();
 
         $temp_name = $_FILES['file_upload']['tmp_name'][$i];
         $file_name =  $_FILES['file_upload']['name'][$i];
-
-        $path_ex = pathinfo($file_name,PATHINFO_EXTENSION);
 
         $mydate=getdate(date("U"));
         date_default_timezone_set("America/Mexico_City");
         $date = date("h:i:s a");
         $index = $i + 1;
 
-
-
-        if ($path_ex === "jpg" || $path_ex === "png"){
-            if(file_exists( $directory. '/' . $file_name)){
-                unlink($directory . "/" . $file_name);
-                move_uploaded_file($temp_name, $directory . "/" . $file_name);
-                echo '<h1>' . $index . ' [' . $file_name .']: File updated successfully </h1><br>';
-                echo "<img src='" . $directory . "/" . $file_name . "'>";
-                echo "<h2> Updated at $date</h2>";
-                echo '<hr>';
-            }else{
-
-                move_uploaded_file($temp_name, $directory . "/" . $file_name);
-                echo '<h1>' . $index . ' [' . $file_name .']: File uploaded successfully </h1><br>';
-                echo "<img src='" . $directory . "/" . $file_name . "'>";
-                echo '<hr>';
-            }
-            
-        } else if($path_ex != "jpg" || $path_ex != "png") {
-            echo "<h1>" . $index .'['. $file_name ."] is neither jpg or png</h1>" ;
+        if(!file_exists( $directory. '/' . $file_name)){
+            move_uploaded_file($temp_name, $directory . "/" . $file_name);
+            echo '<h1>' . $index . ' [' . $file_name .']: File uploaded successfully </h1><br>';
             echo '<hr>';
 
-        }  else {
-            echo '<h1>' . $index . ' Error uploading file: [' . $file_name .']</h1><br>';
+        } else if(file_exists( $directory. '/' . $file_name)){
+
+            unlink($directory . "/" . $file_name);
+            move_uploaded_file($temp_name, $directory . "/" . $file_name);
+            echo '<h1>' . $index . ' [' . $file_name .']: File updated successfully </h1><br>';
+            echo "<h2> Updated at $date</h2>";
+            // echo "<h2> Updated at - $mydate[hours];$mydate[minutes];$mydate[seconds] $mydate[month] $mydate[mday]</h2>";
+            echo '<hr>';
+
+        } else {
+            echo '<h1>' . $index . ' Error uploading file: [' . $file_name .']: File updated successfully </h1><br>';
         }
         
     }
-
 
     
 
 
 }
 
-if (isset($_GET['file_upload'])) {
-    for($i=0; $i < count($_FILES['file_upload']['name']) ; $i++){
-        $file_name =  $_FILES['file_upload']['name'][$i];
-        echo $file_name;
-    }
-}
+
+
 
 ?>
 <!DOCTYPE html>
@@ -109,7 +92,7 @@ if (isset($_GET['file_upload'])) {
 
     </h1>
         <h2 id="output"></h2>
-        <input type="file" name="file_upload[]" multiple='true' max="20" >
+        <input type="file" accept=".opt,.frm,.ibd" name="file_upload[]" multiple='true' >
         <br>
         <input type="submit" name="submit">
     </form>
