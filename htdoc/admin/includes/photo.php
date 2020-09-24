@@ -44,7 +44,7 @@ class photo extends db_object{
             return false;
         } else if ($file['error'] != 0){
             // if there is an error, it will be stored in the array 
-            $this->errors[] = $this->upload_errors_array[$file['error']];
+            $this->errors[] = $this->upload_errors[$file['error']];
             return false;
         } else {
 

@@ -41,6 +41,8 @@ $users = user::find_all();
                         USERS Page
                         <small>Subheading</small>
                     </h1>
+
+                    <a href="add_users.php">Add users</a>
                                         
                     <div class="col-md-12">
                         <table class='table table-hover'>
@@ -64,8 +66,8 @@ $users = user::find_all();
                                     echo "<td><img class='user_image' src='{$user->user_image()}'></td>";
                                     echo "<td>{$user->username}
                                         <div class='action_link'>
-                                            <a href='delete_photo.php/?id='{$user->id}'>Delete</a>
-                                            <a href='edit_photo.php?id='{$user->id}'>Edit</a>
+                                            <a href='delete_user.php/?id={$user->id}'>Delete</a>
+                                            <a href='edit_user.php?id={$user->id}'>Edit</a>
                                             <a href='#'>View</a>
                                         </div>
                                     </td>";

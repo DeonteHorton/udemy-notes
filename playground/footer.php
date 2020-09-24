@@ -54,7 +54,7 @@
                                 <li><a href="index.php">Home</a></li>
                                 <li><a href="#portfolio">Portfolio</a></li>
                                 <li><a href="#">SiteMap</a></li>
-                                <li><a href="contact.php">Contact</a></li>
+                                <li><a href="contacts.php">Contact</a></li>
                             </ul>
                         </div>
                         <div class="col-sm-4">
@@ -64,5 +64,7 @@
                 </div>
             </div>
     </footer>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>

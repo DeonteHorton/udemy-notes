@@ -3,8 +3,21 @@
 // this class is universal, all other files that uses a table can access the sql statements here.
 
 class db_object {
+
+    public  $upload_errors = array(
+
+        UPLOAD_ERR_OK         =>  "There is no error",
+        UPLOAD_ERR_INI_SIZE   =>  "Bigger then the upload_max_size directive",
+        UPLOAD_ERR_FORM_SIZE  =>  "The uploaded file exceeds the upload_max_file_size",
+        UPLOAD_ERR_PARTIAL    =>  "The uploaded file was only partially uploaded",
+        UPLOAD_ERR_NO_FILE    =>  "No file was uploaded.",
+        UPLOAD_ERR_NO_TMP_DIR =>  "Missing a temporary folder. Introduced in PHP 5.0.3",
+        UPLOAD_ERR_CANT_WRITE =>  "Failed to write file to disk. Introduced in PHP 5.1.0",
+        UPLOAD_ERR_EXTENSION  =>  "A PHP extension stopped the file upload"
+    );
+
     protected static $table_users = "users";
-    protected static $table_users_field = array('username','password','first_name','last_name');
+    protected static $table_users_field = array('id','username','password','first_name','last_name','user_image');
 
 
     // these methods are public, it can be used through out the whole project 

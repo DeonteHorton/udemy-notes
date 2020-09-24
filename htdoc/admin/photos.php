@@ -53,8 +53,8 @@
                                     echo "<tr>";
                                     echo "<td><img class='admin-thumbnail' src='{$photo->picture_path()}'>
                                             <div class='picture_link'>
-                                                <a href='delete_photo.php/?id='{$photo->id}'>Delete</a>
-                                                <a href='edit_photo.php?id='{$photo->id}'>Edit</a>
+                                                <a href='delete_photo.php/?id={$photo->id}'>Delete</a>
+                                                <a href='edit_photo.php?id={$photo->id}'>Edit</a>
                                                 <a href='#'>View</a>
                                             </div>
                                         </td>";

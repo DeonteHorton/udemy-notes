@@ -7,6 +7,7 @@
 </head>
 <body>
 <header>
+    <?php require_once "init.php" ?>
         <!-- nav bar -->
         <nav>
             <div class="container">
@@ -21,8 +22,8 @@
                             <li><a href="index.php">home</a></li>
                             <li><a href="news.php">news</a></li>
                             <li><a href="about.php">about</a></li>
-                            <li><a href="#link">features</a></li>
-                            <li><a href="contact.php">contact</a></li>
+                            <li><a href="#">features</a></li>
+                            <li><a href="contacts.php">contact</a></li>
                         </ul>
                     </div>
                     <!-- nav links -->
