@@ -1,8 +1,8 @@
 <?php
 
 class photo extends db_object{
-    protected static $table_users = "photo";
-    protected static $table_users_field = array('title','caption','description','file_name','alternate_text','file_type','size');
+    protected static $db_table = "photo";
+    protected static $db_table_field = array('title','caption','description','file_name','alternate_text','file_type','size');
 
 
     public $id;

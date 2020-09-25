@@ -1,12 +1,12 @@
 <?php
 
 class db_object {
-    protected static $table_contacts = 'contacts';
-    protected static $contacts_field = array('name','email','txt');
+    public static $db_table = 'accounts';
+    public static $db_table_field = array('username','password','first_name','last_name','email','age','created_at');
 
     public static function find_all(){
 
-        return static::find_by_query("SELECT * FROM " . static::$table_contacts);
+        return static::find_by_query("SELECT * FROM " . static::$db_table);
 
     }
 
@@ -63,9 +63,9 @@ class db_object {
         global $database;
 
         $properties = array();
-        foreach(static::$contacts_field as $values){
+        foreach(static::$db_table_field as $values){
             if(property_exists($this,$values)){
-                $properties[$values] = $this->values;
+                $properties[$values] = $this->$values;
             }
         }
         return $properties;
@@ -89,9 +89,13 @@ class db_object {
 
         $properties = $this->properties();
 
-        $sql = "INSERT INTO " . static::$table_contacts;
-        $sql .= " ('" . implode(',',array_keys($properties)) . "') ";
-        $sql .= "VALUES ('" . implode(',',array_values($properties)) . "')";
+        $sql = "INSERT INTO " . static::$db_table;
+        $sql .= " (";
+        $sql .= implode(',',array_keys($properties));
+        $sql .= ")";
+        $sql .= " VALUES ('";
+        $sql .= implode("','",array_values($properties));
+        $sql .= "')";
 
         if($database->query($sql)){
             $this->id = $database->insert_id();

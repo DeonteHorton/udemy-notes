@@ -131,3 +131,20 @@ footer ul{
 @media(max-width:760px){
 
 }
+
+.wrapper{
+    background-color: green;
+    width: 100%;
+    height: 300px;
+}
+.signup-form{
+    width: 1000px;
+    height: 650px;
+    padding: 5px;
+    background-color: rgb(180, 178, 178);
+    margin-left: 15%;
+    margin-top: 5%;
+    border: 7px solid rgb(47, 153, 47);
+    border-radius: 10px;
+    box-shadow: 3px 5px 5px #333;
+}

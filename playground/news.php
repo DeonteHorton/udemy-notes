@@ -1,3 +1,5 @@
+<?php require_once "header.php"  ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,7 +12,6 @@
 </head>
 <body>
 
-<?php require_once "header.php"  ?>
 <div class="green-border"></div>
 
     <main>

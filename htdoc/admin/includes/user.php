@@ -2,8 +2,8 @@
 class user extends db_object{
 
     // Here we are making the table users protected, it can be used everywhere else, an example: the create method can be used in another class. The methods will become accessible
-    protected static $table_users = "users";
-    protected static $table_users_field = array('username','password','first_name','last_name','user_image');
+    protected static $db_table = "users";
+    protected static $db_table_field = array('username','password','first_name','last_name','user_image');
 
 
     public $id;
@@ -50,8 +50,6 @@ class user extends db_object{
 
 
         }
-
-        
         
     }
 
@@ -116,7 +114,7 @@ class user extends db_object{
 
 
         // here we created a multi line sql statement and ran it through the query 
-        $sql = " SELECT * FROM " . self::$table_users . " WHERE ";
+        $sql = " SELECT * FROM " . self::$db_table . " WHERE ";
         $sql .= "username = '{$username}'";
         $sql .= "AND password = '{$password}'";
         $sql .= " LIMIT 1";
