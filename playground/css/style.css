@@ -148,3 +148,52 @@ footer ul{
     border-radius: 10px;
     box-shadow: 3px 5px 5px #333;
 }
+.contact-wrapper{
+    width:500px;
+    height: 500px;
+    padding: 5px;
+    background-color: rgb(177, 158, 158);
+    margin-left: 15%;
+    margin-top: 5%;
+    border: 7px solid rgb(87, 138, 87);
+    border-radius: 10px;
+    box-shadow: 3px 5px 5px #333;
+}
+.pure-table {
+    margin-top: 20px;
+    border-collapse: collapse;
+    border-spacing: 0;
+    empty-cells: show;
+    border: 1px solid black;
+}
+
+.pure-table caption {
+    color: #000;
+    font: italic 85%/1 arial,sans-serif;
+    padding: 1em 0;
+    text-align: center
+}
+
+.pure-table td,.pure-table th {
+    border-left: 1px solid rgb(0, 0, 0);
+    border-width: 0 0 0 1px;
+    font-size: inherit;
+    margin: 0;
+    overflow: visible;
+    padding: .5em 1em
+}
+
+.pure-table thead {
+    background-color: #91e0ff;
+    border-bottom: 1px solid black;
+    color: #000;
+    font-style: italic;
+    text-align: left;
+    vertical-align: bottom
+}
+
+.pure-table td {
+    background-color: rgb(209, 209, 209);
+    border-bottom:  1px solid black;
+    font-style: oblique;
+}

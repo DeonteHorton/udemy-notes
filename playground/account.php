@@ -13,7 +13,7 @@ class account extends db_object{
     public $email;
     public $age;
     public $created_at;
-    public $delete_at;
+    public $deleted_at;
 
 
     public static function verify_user($username,$password){
@@ -23,7 +23,7 @@ class account extends db_object{
         $password = $database->escape_string($password);
 
         $sql = "SELECT * FROM " . static::$db_table . " WHERE ";
-        $sql .= "username = '{$username}' AND password = '{$password}'";
+        $sql .= "username = '{$username}' AND password = '{$password}' AND deleted_at is NULL";
 
         $result_array = self::find_by_query($sql);
 

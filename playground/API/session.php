@@ -5,13 +5,25 @@ class Session{
     private $signed_in = false;
     public $user_id;
     public $user_name;
+    public $count = 1;
 
     function __construct(){
         session_start();
+        $this->vistor_count();
         $this->check_the_login();
         $this->check_message();
     }
 
+    public function vistor_count(){
+    
+        if(isset($_SESSION['count'])){
+            return $this->count = $_SESSION['count']++;
+        } else {
+            $_SESSION['count'] = 1;
+        }
+
+
+    }
 
     public function message($msg=''){
 

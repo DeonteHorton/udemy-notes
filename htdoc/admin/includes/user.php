@@ -54,12 +54,7 @@ class user extends db_object{
     }
 
     public function save_user_and_image(){
-    
-        if($this->id){
 
-            $this->update();
-
-        } else {
 
             // if this runs and stops, that means we have an error 
             if(!empty($this->errors)){
@@ -101,7 +96,7 @@ class user extends db_object{
 
 
             $this->create();
-        }
+    
     }
 
     

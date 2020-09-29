@@ -20,15 +20,24 @@
 
         $user_found = account::verify_user($username,$password);
 
-        if ($user_found) {
-            $message = "<div class='bg-primary'>User was Found</div>";
+         
+        if($user_found && $username === 'Admin'){
+            $session->login($user_found);
+            $_SESSION['user_name'] = $username;
+            redirect('admin/accounts.php');
+
+        }else if ($user_found) {
             $session->login($user_found);
             $_SESSION['user_name'] = $username;
             redirect('index.php');
+
         } else {
             $message = "<div class='bg-danger'>Your username and/or password is incorrect</div>";
             
         }
+        
+        
+       
 
     } else {
         $username = '';
@@ -38,18 +47,6 @@
     
     ?>
 
-
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
     <div class="green-border"></div>
 
     <div class="col-md-12 ">

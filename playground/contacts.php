@@ -1,13 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
     <?php require_once "header.php" ?>
     <div class="green-border"></div>
 
@@ -41,7 +31,7 @@
                             <?php
                             
                             if($session->is_signed_in()){
-                                echo "<input disabled value='{$_SESSION['user_name']}' name='name' placeholder='{$_SESSION['user_name']}' type='text' class='form-control'>";
+                                echo "<input readonly value='{$_SESSION['user_name']}' name='name' placeholder='{$_SESSION['user_name']}' type='text' class='form-control'>";
                             } else {
                                 echo "<input name='name' placeholder='Name' type='text' class='form-control'>";
                             }
@@ -59,9 +49,26 @@
                     </form>
                 </div>
             </div>
+            
+            <?php
+            
+            $tickets = contact::find_all();
+
+            foreach ($tickets as $ticket ) {
+                echo "<div class='row'>";
+                echo "<div class='col-sm-12'>";
+                echo "<div class='contact-wrapper'>";
+                echo "<h2>Name: {$ticket->name}</h2>";
+                echo "<h3>Email: {$ticket->email}</h3>";
+                echo "<h4>Form: {$ticket->text}</h4>";
+                echo "<div class='dash-line' style='width:auto;height: 1.5px;background-color: rgb(16, 116, 16);'></div>";
+                echo "</div>";
+                echo "</div>";
+                echo "</div>";
+            }
+            
+            ?>
         </div>
     </main>
 
     <?php require_once "footer.php" ?>
-</body>
-</html>

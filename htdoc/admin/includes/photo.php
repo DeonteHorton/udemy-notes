@@ -66,13 +66,7 @@ class photo extends db_object{
     
     }
 
-    public function save(){
-    
-        if($this->id){
-
-            $this->update();
-
-        } else {
+    public function photo_save(){
 
             // if this runs and stops, that means we have an error 
             if(!empty($this->errors)){
@@ -114,7 +108,7 @@ class photo extends db_object{
 
 
             $this->create();
-        }
+        
     }
 
     public function delete_photo(){

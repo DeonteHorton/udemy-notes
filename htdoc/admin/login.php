@@ -1,6 +1,5 @@
 <?php require_once "includes/header.php" ?>
 
-
 <?php
 
 // this statement redirect the user to the index.php page 
@@ -23,6 +22,8 @@ if(isset($_POST['submit'])){
 
     if($user_found) {
         $session->login($user_found);
+        $_SESSION['user_name'] = $username;
+
         redirect("index.php");
     } else {
        $the_message = "Your username or password is incorrect";

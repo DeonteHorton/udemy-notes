@@ -1,6 +1,7 @@
 <?php include("includes/header.php"); ?>
+<?php if(!$session->is_signed_in()) {redirect('login.php');}  ?>
 
-<?php if(!$session->is_signed_in()) {redirect("login.php");} ?>
+
 
 <?php
 
@@ -19,9 +20,19 @@ if(isset($_POST['update'])){
         $user->password = $_POST['password'];
         $user->first_name = $_POST['first_name'];
         $user->last_name = $_POST['last_name'];
+
+        if(empty($_FILES['user_image'])){
+
+            $user->save();
+        } else {
+            $user->set_file($_FILES['new_file']);
+            $user->save_user_and_image();
+            $user->save();
+
+            redirect("edit_user.php?id={$user->id}");
+
+        }
       
-        $user->set_file($_FILES['new_file']);
-        $user->save_user_and_image();
     }
 }
 
