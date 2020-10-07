@@ -21,5 +21,24 @@ C - Controller - the middle man/ the VIEW and the model
  upload_tmp_dir - NULL
  max_execution_time - 30 second
 
+~~~~~~Stuff to look back over~~~~~~
+Eloquent Relationships
+One to One Relationships
+One to Many Relationships
+Many to Many Relationships
+Has Many Through Relationships
+Polymorphic Relationships
 
- ~~~~~~ Abstracting Properties ~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~ Laravel Notes ~~~~~~
+in the lesson, when he goes to the http folder, go to the routes folder. The route is in the web.php file,
+The app folder is the main folder for our application, it is where we keep our models and controllers.
+the config folder is where all of our configuration files are located.
+Files that need to be complied will be located in the resources folder,
+
+  Route::get('/checking', '\App\Http\Controllers\HomeController@index'); 
+
+~~~~~~ Polymorphic relation ~~~~~~~~~~~
+
+Polymorphic relations allow a model to loan to more than one model in a single association, For Example:
+the Table users and the Table posts can be related to Photos
