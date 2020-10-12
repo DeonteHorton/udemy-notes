@@ -16,18 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/createblog',function(){
-
-    return view('createBlog');
-
-});
-
-
-Route::get('/test/{string}','App\Http\Controllers\BlogController@index');
-Route::get('/blog','App\Http\Controllers\BlogController@allBlogs');
-Route::get('/blog/{id}','App\Http\Controllers\BlogController@getBlog');
-Route::get('/insert','App\Http\Controllers\BlogController@insert');
-Route::get('/yourblog/{name}','App\Http\Controllers\BlogController@getUserBlogs');
 
 Auth::routes();
 

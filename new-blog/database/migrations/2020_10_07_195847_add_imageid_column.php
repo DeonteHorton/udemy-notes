@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateBlogsTable extends Migration
+class AddImageidColumn extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateBlogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('blogs', function (Blueprint $table) {
-            $table->id('id');
-            $table->string('title');
-            $table->string('author');
-            $table->text('text');
-            $table->timestamps();
+        Schema::table('photos', function (Blueprint $table) {
+            //
+            // $table->integer('image_id');
         });
     }
 
@@ -29,6 +26,9 @@ class CreateBlogsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('blogs');
+        Schema::table('photos', function (Blueprint $table) {
+            //
+            $table->dropIfExists('photos');
+        });
     }
 }

@@ -18,7 +18,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    {{-- <link href="{{ asset('resources/sass/app.scss') }}" rel="stylesheet"> --}}
 </head>
 <body>
     <div id="app">
@@ -40,7 +39,6 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -51,9 +49,6 @@
                                 </li>
                             @endif
                         @else
-                        <li><a class="nav-link" href='/home'>Home </a></li>
-                        <li><a class ='nav-link' href='/createblog'>Create Post </a></li>
-                        <li><a class="nav-link" href="/blog">Check Blog</a></li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -65,7 +60,6 @@
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-                                    <a class='dropdown-item' href="/yourblog/{{ Auth::user()->name }}">Check Your Blogs</a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf

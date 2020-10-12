@@ -12,7 +12,7 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     /**
-     * The attributes that are mass assignable. 
+     * The attributes that are mass assignable.
      *
      * @var array
      */
@@ -40,16 +40,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-
-    public function Blog(){
-    
-        return $this->hasOne('App\Models\Blog');
-
-    }
-
-    public function Blogs(){
-    
-        return $this->belongsToMany("App\Models\Blog");
-
-    }
 }

@@ -25,8 +25,8 @@ class CreatePostRequest extends FormRequest
     {
         return [
             //
-            'title'=>'required',
-            'body'=>'required|min:2'
+            // 'title'=>'required',
+            // 'body'=>'required|min:2'
         ];
     }
 }

@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Blog;
-use App\Models\User;
 
 class BlogController extends Controller
 {
@@ -13,10 +11,9 @@ class BlogController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($string)
+    public function index()
     {
         //
-        return "Hello there {$string}";
     }
 
     /**
@@ -72,50 +69,6 @@ class BlogController extends Controller
     public function update(Request $request, $id)
     {
         //
-    }
-
-    public function test(){
-    
-        $people = user::all();
-
-        return view('blog',compact('people'));
-
-
-    }
-
-    public function allBlogs(){
-    
-        $blogs = Blog::all();
-
-        return view('blog',compact('blogs'));
-
-    }
-
-    public function getBlog($id){
-    
-        $blog = Blog::find($id);
-
-        return view('blogSingle',compact('blog'));
-
-    }
-
-
-    public function getUserBlogs($name){
-    
-        $blogs = Blog::where('author',$name)->get();
-
-        return view('blog',compact('blogs'));
-    //    return $blogs;
-
-    }
-
-
-    public function insert($title,$author,$text,$created_at){
-    
-        $blog = Blog::insert('insert into blogs (title,author,text,created_at) values (?,?,?,?)',[$title,$author,$text,$created_at]);
-
-        return $blog;
-
     }
 
     /**

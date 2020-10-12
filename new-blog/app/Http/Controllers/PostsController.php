@@ -21,7 +21,7 @@ class PostsController extends Controller
     public function index()
     {
         //
-        $posts = Posts::all();
+        $posts = Posts::latest()->get();
         return view('posts.index',compact('posts'));
     }
 
@@ -44,22 +44,18 @@ class PostsController extends Controller
      */
     public function store(CreatePostRequest $request)
     {
+        $request->file();
         //
-
-        // return $request->get('title');
-        // return $request->title;
-        // return $request->all();
-        // $input = $request->all();
-
-        // $input['title'] = $request->title;
-        // Posts::create($request->all());
-
+        // inside of the request below, you have to give it the file name/path
+        // $_FILE['name']['file'] is basically equal to the request below 
 
         // $this->validate($request,[]);
 
-        Posts::create($request->all());
+        // Posts::create($request->all());
 
-        return redirect('/posts');
+
+        // return redirect('/posts');
+
 
     }
 
@@ -149,4 +145,6 @@ class PostsController extends Controller
     
         return view('post');
     }
+
+
 }
