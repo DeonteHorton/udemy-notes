@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use PhpParser\Node\Attribute;
 
 class User extends Authenticatable
 {
@@ -42,35 +43,33 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
+
+
+
     public function post(){
 
+        // i can find the post that belongs to the user
         return $this->hasOne('App\Models\Posts');
 
     }
     public function posts(){
     
+        // i can find all the post that belongs to this user
         return $this->hasMany('App\Models\Posts');
 
     }
 
     public function roles(){
     
+        // Able to find the roles that belong to the user
         return $this->belongsToMany('App\Models\Roles');
-
-
-        // this is how you include one of the cloumns in a pivot
-        // return $this->belongsToMany('App\Models\Roles')->withPivot('created_at');
-
-        
-        // To customize tables name and columns,follow the format below
-
-        // return $this->belongsToMany('App\Models\Roles','user_roles','user_id','role_id');
-
 
     }
 
     public function countries(){
 
+        // able to find the countries that belongs to the user
         return $this->belongsToMany('App\Models\Country')->withPivot('name');
     
     }
@@ -78,8 +77,20 @@ class User extends Authenticatable
 
     public function photos(){
 
+        // getting all users image from the photo table
         return $this->morphMany('App\Models\Photo','image');
     
+    }
+    public function getNameAttribute($value){
+    
+        return ucfirst($value);
+
+    }
+
+    public function setNameAttribute($value){
+    
+        $this->attributes['name'] = strtoupper($value);
+
     }
 
 

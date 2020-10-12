@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddImageidColumn extends Migration
+class CreateRolesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class AddImageidColumn extends Migration
      */
     public function up()
     {
-        Schema::table('photos', function (Blueprint $table) {
-            //
-            $table->integer('image_id');
+        Schema::create('roles', function (Blueprint $table) {
+            $table->id('id');
+            $table->string('name');
+            $table->timestamps();
         });
     }
 
@@ -26,9 +27,6 @@ class AddImageidColumn extends Migration
      */
     public function down()
     {
-        Schema::table('photos', function (Blueprint $table) {
-            //
-            $table->dropIfExists('photos');
-        });
+        Schema::dropIfExists('roles');
     }
 }

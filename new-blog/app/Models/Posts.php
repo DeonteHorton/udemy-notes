@@ -21,13 +21,22 @@ class Posts extends Model
 
     public function user(){
     
+        // i can find user that belongs to the post
         return $this->belongsTo('App\Models\User');
 
     }
 
     public function photos(){
 
+        // getting all posts image from the photo table
         return $this->morphMany('App\Models\Photo','image');
     
+    }
+
+    public function tags(){
+    
+        // gets all of the tags for the post 
+        return $this->morphToMany('App\Models\Tag','taggable');
+
     }
 }

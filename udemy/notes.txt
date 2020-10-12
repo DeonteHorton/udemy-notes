@@ -22,21 +22,62 @@ C - Controller - the middle man/ the VIEW and the model
  max_execution_time - 30 second
 
 ~~~~~~Stuff to look back over~~~~~~
-Eloquent Relationships
-One to One Relationships
-One to Many Relationships
-Many to Many Relationships
-Has Many Through Relationships
-Polymorphic Relationships
 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-~~~~~~ Laravel Notes ~~~~~~
-in the lesson, when he goes to the http folder, go to the routes folder. The route is in the web.php file,
-The app folder is the main folder for our application, it is where we keep our models and controllers.
-the config folder is where all of our configuration files are located.
-Files that need to be complied will be located in the resources folder,
+Eloquent Relationships{
+  Eloquent relationships are defined as methods on your Eloquent model classes. Since, like Eloquent models themselves, relationships also serve as powerful query builders, defining relationships as methods provides powerful method chaining and querying capabilities.
+} 
 
-  Route::get('/checking', '\App\Http\Controllers\HomeController@index'); 
+One to One Relationships{
+  A one-to-one relationship is a very basic relation. For example, a User model might be associated with one Phone. To define this relationship, we place a phone method on the User model. The phone method should call the hasOne method and return its result:
+
+  hasOne-get name of the matching key from that table
+  belongsTo- finds the current matching key to the owner
+
+}
+
+One to Many Relationships{
+  A one-to-many relationship is used to define relationships where a single model owns any amount of other models. For example, a blog post may have an infinite number of comments. Like all other Eloquent relationships, one-to-many relationships are defined by placing a function on your Eloquent model:
+
+  hasMany- Example: a post can have alot of comments- it will search for all the comments that belongs to that post
+
+}
+
+Many to Many Relationships{
+  Many-to-many relations are slightly more complicated than hasOne and hasMany relationships. An example of such a relationship is a user with many roles, where the roles are also shared by other users. For example, many users may have the role of "Admin".
+
+  To define this relationship, three database tables are needed: users, roles, and role_user. The role_user table is derived from the alphabetical order of the related model names, and contains the user_id and role_id columns:
+
+  belongsToMany - once the relationship is defined, i can access all users that belong to a certian role or access the roles that belong to a user
+
+}
+
+Has One Through{
+  For example, in a vehicle repair shop application, each Mechanic may have one Car, and each Car may have one Owner. While the Mechanic and the Owner have no direct connection, the Mechanic can access the Owner through the Car itself. Let's look at the tables necessary to define this relationship:
+
+  hasOneThrough - able to access the owner table from the mechanic table because the mechanic work on the owners car, the car has its own table
+
+}
+
+Has Many Through Relationships{
+
+  The "has-many-through" relationship provides a convenient shortcut for accessing distant relations via an intermediate relation. For example, a Country model might have many Post models through an intermediate User model. In this example, you could easily gather all blog posts for a given country. Let's look at the tables required to define this relationship:
+
+  hasManyThrough - able to get all the post related to the country by the intermediate table user's country_id
+
+}
+
+Polymorphic Relationships{
+  A polymorphic relationship allows the target model to belong to more than one type of model using a single association.
+}
+
+Polymorphic One To One{
+  A one-to-one polymorphic relation is similar to a simple one-to-one relation; however, the target model can belong to more than one type of model on a single association. For example, a blog Post and a User may share a polymorphic relation to an Image model. Using a one-to-one polymorphic relation allows you to have a single list of unique images that are used for both blog posts and user accounts.
+}
+
+
+
+
+
 
 ~~~~~~ Polymorphic relation ~~~~~~~~~~~
 

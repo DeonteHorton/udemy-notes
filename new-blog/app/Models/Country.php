@@ -13,7 +13,8 @@ class Country extends Model
         
         // We can choose to customize the column names, by default it's going to use some ids. in this model we are using two tables 
 
-        //This is were we relate the post table with the country table, we are binding the user_id and the country_id and we are attaching it to the posts method
+        // we are getting all the posts for country, the post table doesn't have a country id but the user table does, so we are getting the post for the country by the country_id in the user table
+
         return $this->hasManyThrough('App\Models\Posts','App\Models\User');
 
 

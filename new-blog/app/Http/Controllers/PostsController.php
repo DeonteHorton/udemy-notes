@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Http\Requests\CreatePostRequest;
 use App\Http\Controllers;
 use App\Models\Country;
 use App\Models\Posts;
@@ -17,10 +18,11 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($string)
+    public function index()
     {
         //
-        echo "hello {$string}";
+        $posts = Posts::all();
+        return view('posts.index',compact('posts'));
     }
 
     /**
@@ -31,7 +33,7 @@ class PostsController extends Controller
     public function create()
     {
         //
-        return "I am the method that creates stuff :)";
+        return view('posts.create');
     }
 
     /**
@@ -40,9 +42,25 @@ class PostsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreatePostRequest $request)
     {
         //
+
+        // return $request->get('title');
+        // return $request->title;
+        // return $request->all();
+        // $input = $request->all();
+
+        // $input['title'] = $request->title;
+        // Posts::create($request->all());
+
+
+        // $this->validate($request,[]);
+
+        Posts::create($request->all());
+
+        return redirect('/posts');
+
     }
 
     /**
@@ -54,7 +72,8 @@ class PostsController extends Controller
     public function show($id)
     {
         //
-        return "Hello, number {$id} is avalible";
+        $post = Posts::findOrFail($id);
+        return view('posts.show',compact('post'));
     }
 
     /**
@@ -66,6 +85,10 @@ class PostsController extends Controller
     public function edit($id)
     {
         //
+        $post = Posts::findOrFail($id);
+
+        return view('posts.edit',compact('post'));
+
     }
 
     /**
@@ -78,6 +101,12 @@ class PostsController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $post = Posts::findOrFail($id);
+        
+
+        $post->update($request->all());
+        return view('posts.show',compact('post'));
+
     }
 
     /**
@@ -89,6 +118,11 @@ class PostsController extends Controller
     public function destroy($id)
     {
         //
+        $post = Posts::findOrFail($id);
+
+        $post->delete();
+
+        return redirect('/posts');
     }
 
     public function contact(){

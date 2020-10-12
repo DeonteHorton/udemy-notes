@@ -109,6 +109,15 @@ class BlogController extends Controller
 
     }
 
+
+    public function insert($title,$author,$text,$created_at){
+    
+        $blog = Blog::insert('insert into blogs (title,author,text,created_at) values (?,?,?,?)',[$title,$author,$text,$created_at]);
+
+        return $blog;
+
+    }
+
     /**
      * Remove the specified resource from storage.
      *

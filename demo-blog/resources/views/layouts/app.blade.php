@@ -40,10 +40,7 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
-                        <li><a class="nav-link" href='/home'>Home </a></li>
-                        <li><a class ='nav-link' href='/createPost'>Create Post </a></li>
-                        {{-- <li>{Check_Blog}</li> --}}
-                        <li><a class="nav-link" href="/blog">Check Blog</a></li>
+
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -54,6 +51,9 @@
                                 </li>
                             @endif
                         @else
+                        <li><a class="nav-link" href='/home'>Home </a></li>
+                        <li><a class ='nav-link' href='/createblog'>Create Post </a></li>
+                        <li><a class="nav-link" href="/blog">Check Blog</a></li>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}

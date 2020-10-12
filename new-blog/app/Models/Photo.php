@@ -11,6 +11,7 @@ class Photo extends Model
 
     public function image(){
 
+        // getting the owning image model 
         return $this->morphTo();
     
     }

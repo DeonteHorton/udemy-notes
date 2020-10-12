@@ -12,7 +12,8 @@ class Roles extends Model
     
     public function users(){
     
-        return $this->BelongsToMany('App\Models\User');
+        //  i can find all users that belongs to a certian role
+        return $this->belongsToMany('App\Models\User');
 
     }
 
